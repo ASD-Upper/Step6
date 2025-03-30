@@ -1,0 +1,768 @@
+/* Define CSS variables for theme colors */
+:root {
+  /* Dark theme (default) */
+  --background-color: #0a1929;
+  --card-bg-color: rgba(30, 41, 59, 0.95);
+  --text-color: #f8fafc;
+  --search-bg: #1e293b;
+  --border-color: #334155;
+  --button-color: #2563eb;
+  --button-hover: #3b82f6;
+  --primary-color: #60a5fa;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --header-bg: #0a1929;
+  --button-bg: #2563eb;
+  --button-hover-bg: #3b82f6;
+  --text-muted: rgba(255, 255, 255, 0.6);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --background-color: #f0f9ff;
+  --card-bg-color: rgba(255, 255, 255, 0.95);
+  --text-color: #0f172a;
+  --search-bg: #ffffff;
+  --border-color: #cbd5e1;
+  --button-color: #2563eb;
+  --button-hover: #3b82f6;
+  --primary-color: #1d4ed8;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --header-bg: #f0f9ff;
+  --button-bg: #2563eb;
+  --button-hover-bg: #3b82f6;
+  --text-muted: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    width: 100%;
+    display: block;
+}
+
+/* Header Styles */
+header {
+  background-color: var(--header-bg);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.header-left h1 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 1.8rem;
+}
+
+.header-center {
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  background: var(--button-bg);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover-bg);
+  transform: scale(1.05);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: var(--search-bg);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+#search-input {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  outline: none;
+}
+
+#search-input::placeholder {
+  color: var(--text-muted);
+}
+
+#search-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background: var(--button-hover-bg);
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-center {
+    width: 100%;
+  }
+
+  .header-right {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Filter Buttons */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+    max-width: 1800px;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #2563eb, #60a5fa);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+/* Container for videos and uploads */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1800px;
+    padding: 0 20px;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Video Card Styles */
+.video-card {
+    background: var(--card-bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-card:hover .video-actions {
+    opacity: 1;
+}
+
+.edit-video-btn, .delete-video-btn {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.edit-video-btn:hover {
+    background-color: rgba(37, 99, 235, 0.9);
+}
+
+.delete-video-btn:hover {
+    background-color: rgba(220, 38, 38, 0.9);
+}
+
+.thumbnail {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-content {
+    padding: 15px;
+}
+
+.video-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: left;
+}
+
+.video-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin-bottom: 15px;
+}
+
+.video-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.video-link {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    background: linear-gradient(45deg, #1a5fb4, #2563eb);
+    color: white;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.video-link:hover {
+    background: linear-gradient(45deg, #2563eb, #3b82f6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* File Input & Card Styles */
+#upload-section {
+    max-width: 220px;
+    margin: 7px auto;
+    padding: 16px;
+    background-color: var(--card-bg-color);
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#upload-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+#file-input {
+    display: none;
+}
+
+#custom-upload-btn {
+    /* Keep simple styles here that don't conflict with the Header.css styling */
+    background-color: var(--button-color); 
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    /* Remove the absolute positioning and other styles that would conflict */
+}
+
+#custom-upload-btn:hover {
+    background-color: var(--button-hover);
+}
+
+#file-info {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.file-card {
+    background: var(--card-bg-color);
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Add Video Section */
+#add-video-section {
+    max-width: 220px;
+    margin: 7px auto;
+    padding: 16px;
+    background-color: var(--card-bg-color);
+    border-radius: 5px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#show-add-video-form-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#show-add-video-form-btn:hover {
+    background-color: var(--button-hover);
+}
+
+#add-video-form {
+    margin-top: 20px;
+}
+
+#add-video-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.input-icon {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.form-buttons button[type="submit"] {
+    background-color: var(--button-color);
+    color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+    background-color: var(--button-hover);
+}
+
+.form-buttons button[type="button"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.form-buttons button[type="button"]:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-feedback {
+    font-size: 0.875rem;
+    margin-top: 5px;
+    min-height: 1.25rem;
+    color: #f87171;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    overflow: auto;
+}
+
+.modal-content {
+    position: relative;
+    margin: 10% auto;
+    width: 80%;
+    max-width: 1000px;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.close-modal {
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.modal-controls {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+.modal-controls button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.modal-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.iframe-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+#video-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Back to top button */
+#back-to-top {
+    position: fixed;
+    bottom: 60px;
+    right: 25px;
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 999;
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top:hover {
+    opacity: 1;
+}
+
+/* Theater mode */
+.modal.theater-mode .modal-content {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+/* Quality badge */
+.quality-badge {
+    background-color: rgba(37, 99, 235, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Preview functionality */
+.preview-link {
+    background: linear-gradient(45deg, #333333, #555555);
+}
+
+/* Edit Modal */
+.edit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    overflow: auto;
+}
+
+.edit-modal-content {
+    position: relative;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 600px;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.edit-modal-header h2 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.close-edit-modal {
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Transitions and animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .modal-controls {
+        justify-content: center;
+    }
+    
+    .video-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+/* Loading indicator */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    #upload-section, #add-video-section {
+        padding: 15px;
+    }
+}
+
+/* Remove default button styling from react */
+button {
+  border-radius: 4px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+/* Global modal and input stacking context rules */
+.add-video-modal,
+.modal,
+.edit-modal {
+  position: fixed;
+  z-index: 9999;
+  isolation: isolate;
+}
+
+input, button, select, textarea {
+  position: relative;
+  z-index: auto;
+}

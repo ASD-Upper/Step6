@@ -1,0 +1,363 @@
+/* Developer Dashboard Styling */
+.dev-dashboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border-top: 1px solid #333;
+  z-index: 9999;
+  font-family: 'Roboto Mono', monospace;
+  transition: all 0.3s ease;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dev-dashboard.collapsed {
+  height: 40px;
+}
+
+.dev-dashboard.expanded {
+  height: 500px;
+}
+
+.dashboard-toggle {
+  height: 40px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: #2c2c2c;
+  border-bottom: 1px solid #444;
+  user-select: none;
+}
+
+.dashboard-toggle span {
+  margin: 0 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dashboard-content {
+  height: calc(100% - 40px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.close-dashboard {
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.close-dashboard:hover {
+  color: #ff5555;
+}
+
+.dashboard-tabs {
+  display: flex;
+  background: #252525;
+  border-bottom: 1px solid #444;
+}
+
+.dashboard-tabs button {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  border-right: 1px solid #444;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-tabs button.active {
+  background: #303030;
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+.dashboard-tabs button:hover:not(.active) {
+  background: #333;
+  box-shadow: none;
+}
+
+.dashboard-tabs button svg {
+  margin-right: 8px;
+}
+
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.components-list, .styles-list, .tools-section {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.components-list h3, .styles-list h3, .tools-section h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #ccc;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+}
+
+.components-list ul, .styles-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.components-list li, .styles-list li {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: #2c2c2c;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.components-list li:hover, .styles-list li:hover {
+  background: #333;
+  border-left-color: #007bff;
+}
+
+.components-list li.selected, .styles-list li.selected {
+  background: #353535;
+  border-left-color: #0095ff;
+}
+
+.component-name, .file-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.component-path {
+  font-size: 12px;
+  color: #999;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.component-desc, .file-desc {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.code-editor {
+  flex: 1.5;
+  padding: 15px;
+  border-left: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.code-editor h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.code-editor textarea {
+  flex: 1;
+  background: #1d1d1d;
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 1.5;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+  min-height: 200px;
+}
+
+.editor-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.editor-actions button {
+  padding: 8px 16px;
+  text-transform: none;
+  font-size: 14px;
+}
+
+/* Tools Section */
+.tool-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.tool-card {
+  background: #2c2c2c;
+  border-radius: 6px;
+  padding: 15px;
+  width: calc(50% - 8px);
+  box-sizing: border-box;
+}
+
+.tool-card h4 {
+  margin-top: 0;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  margin: 0 0 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.tool-card button {
+  background: #0069d9;
+  margin: 5px 0;
+  transition: background 0.2s;
+  font-size: 13px;
+  padding: 6px 12px;
+  display: block;
+  width: 100%;
+}
+
+.tool-card button:hover {
+  background: #0054af;
+  transform: none;
+}
+
+/* For light theme */
+[data-theme="light"] .dev-dashboard {
+  background: #f8f9fa;
+  color: #333;
+  border-top: 1px solid #ddd;
+}
+
+[data-theme="light"] .dashboard-toggle {
+  background: #eaeaea;
+  border-bottom: 1px solid #ddd;
+}
+
+[data-theme="light"] .dashboard-header,
+[data-theme="light"] .dashboard-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+[data-theme="light"] .dashboard-tabs {
+  background: #f1f1f1;
+}
+
+[data-theme="light"] .dashboard-tabs button {
+  color: #555;
+  border-right: 1px solid #ddd;
+}
+
+[data-theme="light"] .dashboard-tabs button.active {
+  background: #fff;
+  color: #333;
+}
+
+[data-theme="light"] .dashboard-tabs button:hover:not(.active) {
+  background: #e9e9e9;
+}
+
+[data-theme="light"] .components-list h3, 
+[data-theme="light"] .styles-list h3, 
+[data-theme="light"] .tools-section h3 {
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+[data-theme="light"] .components-list li, 
+[data-theme="light"] .styles-list li {
+  background: #f1f1f1;
+}
+
+[data-theme="light"] .components-list li:hover, 
+[data-theme="light"] .styles-list li:hover {
+  background: #e9e9e9;
+}
+
+[data-theme="light"] .components-list li.selected, 
+[data-theme="light"] .styles-list li.selected {
+  background: #e5e5e5;
+}
+
+[data-theme="light"] .component-name, 
+[data-theme="light"] .file-name {
+  color: #333;
+}
+
+[data-theme="light"] .component-path {
+  color: #777;
+}
+
+[data-theme="light"] .component-desc, 
+[data-theme="light"] .file-desc {
+  color: #555;
+}
+
+[data-theme="light"] .code-editor {
+  border-left: 1px solid #ddd;
+}
+
+[data-theme="light"] .code-editor h3 {
+  color: #333;
+}
+
+[data-theme="light"] .code-editor textarea {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+[data-theme="light"] .tool-card {
+  background: #f1f1f1;
+}
+
+[data-theme="light"] .tool-card h4 {
+  color: #333;
+}
+
+[data-theme="light"] .tool-card p {
+  color: #555;
+}
