@@ -1,0 +1,11 @@
+[build]
+  command = "pnpm build"
+  publish = "dist" # Vite's default output directory
+
+[build.environment]
+  NPM_FLAGS = "--version"
+  NODE_VERSION = "18"
+
+[plugins]
+[[plugins]]
+  package = "@netlify/plugin-pnpm" 

@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "PNPM_VERSION": "8.x"
+    }
+  },
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist"
+} 
