@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3004';
+// Change the API URL from localhost to Glitch
+const API_URL = 'https://alder-sable-hail.glitch.me';
 
 // Create axios instance with base URL
 const api = axios.create({

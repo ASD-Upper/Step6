@@ -84,7 +84,7 @@ const AdminDashboard = () => {
   const fetchServerInfo = async () => {
     try {
       // Use the same API URL as defined in our api.js
-      const apiUrl = 'http://localhost:3004';
+      const apiUrl = 'https://alder-sable-hail.glitch.me';
       
       // Get server info from our videos endpoint
       const response = await videoAPI.getAllVideos();
@@ -98,7 +98,7 @@ const AdminDashboard = () => {
       console.error('Error fetching server info:', err);
       // Don't show error UI for server info - it's not critical
       setServerInfo({
-        url: 'http://localhost:3004',
+        url: 'https://alder-sable-hail.glitch.me',
         version: 'Unknown',
         itemCount: videos.length
       });
